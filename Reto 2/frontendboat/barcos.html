@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de barcos</title>
+    <!--
+    <script src="js/jquery-3.6.0.min.js"></script>
+    -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="js/listar.js"></script>
+    <script src="js/registrar.js"></script>
+    <script src="js/editar.js"></script>
+    <script src="js/borrar.js"></script>
+    <script src="js/funciones.js"></script>
+</head>
+
+<body>
+    <div>
+        <h1>Listado de barcos disponibles</h1>
+
+        <!-- en el elemento identificado con el id 'mensajes' se mostraran los mensajes
+             o resultado de ejecutar la peticion
+        -->
+        <div id="mensajes"></div>
+        <br>
+        <a href="index.html"><img src="img/back.png" alt="Regresar"></a>
+        
+        <button id="nuevoRegistro" onclick="activaNuevo();">Registrar Barco</button>
+        <!--aqui se actualizara el listado de barcos-->
+        <div id="listado"></div>
+
+        <!-- Seccion para nuevos registros-->
+        <div id="nuevo">
+            <h3>Registrar Barco</h3>
+            <input type="number" id="id" placeholder="id">
+            <input type="text" id="name" placeholder="name">
+            <input type="text" id="brand" placeholder="brand">
+            <input type="number" id="model" placeholder="model">
+            <input type="number" id="category" placeholder="category_id">
+            <button onclick="registrar();">Guardar</button>
+            <button onclick="estadoInicial();">Cancelar</button>
+        </div>
+
+
+        <!-- Seccion para editar registros-->
+        <div id="editar">
+            <h3>Editar Barco</h3>
+            <input type="number" id="idEdit" placeholder="id">
+            <input type="text" id="nameEdit" placeholder="name">
+            <input type="text" id="brandEdit" placeholder="brand">
+            <input type="number" id="modelEdit" placeholder="model">
+            <input type="number" id="categoryEdit" placeholder="category_id">
+            <button onclick="actualizar();">Guardar</button>
+            <button onclick="estadoInicial();">Cancelar</button>
+        </div>
+        
+    </div>
+</body>
+
+</html>

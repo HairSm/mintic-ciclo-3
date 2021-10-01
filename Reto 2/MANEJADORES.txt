@@ -1,0 +1,123 @@
+
+URL:https://gd19461fa8d6ae6-db202109232025.adb.sa-saopaulo-1.oraclecloudapps.com
+
+//MANEJADOR GET
+SELECT * FROM BOAT ORDER BY ID
+
+//MANEJADOR POST
+BEGIN 
+    INSERT INTO BOAT(ID,BRAND,MODEL,CATEGORY_ID,NAME)
+    VALUES(:id,:brand,:model,:category_id,:name);
+    :status_code:=201;
+    END;
+
+
+//MANEJADOR PUT
+BEGIN
+    UPDATE BOAT SET BRAND =:brand, MODEL =:Model, CATEGORY_ID =:category_id, NAME =:name
+    WHERE ID =:id;
+    :status_code:=201;
+    END;
+
+//MANEJADOR DELETE
+BEGIN
+    DELETE FROM BOAT WHERE ID =:id;
+    :status_code:=204;
+    END;
+
+
+//boat/:id 
+//MANEJADOR GET
+SELECT * FROM BOAT WHERE ID = :id
+
+
+//base de datos sql
+
+CREATE TABLE boat (
+ID NUMBER(10) NOT NULL,
+BRAND VARCHAR2(20) NULL,
+MODEL NUMBER(10) NULL,
+CATEGORY_ID NUMBER(10) NULL,
+NAME VARCHAR2(400) NULL,
+PRIMARY KEY (ID));
+
+/////////////////////////////////////Reto 2
+
+
+//MANEJADOR GET
+SELECT * FROM CLIENT ORDER BY ID
+
+//MANEJADOR POST
+BEGIN 
+    INSERT INTO CLIENT(ID,NAME,EMAIL,AGE)
+    VALUES(:id,:name,:email,:age);
+    :status_code:=201;
+    END;
+
+
+//MANEJADOR PUT
+BEGIN
+    UPDATE CLIENT SET NAME =:name, EMAIL =:email, AGE =:age
+    WHERE ID =:id;
+    :status_code:=201;
+    END;
+
+//MANEJADOR DELETE
+BEGIN
+    DELETE FROM CLIENT WHERE ID =:id;
+    :status_code:=204;
+    END;
+
+
+//client/:id 
+//MANEJADOR GET
+SELECT * FROM CLIENT WHERE ID = :id
+
+
+//base de datos sql
+
+CREATE TABLE CLIENT (
+ID NUMBER(10) NOT NULL,
+NAME VARCHAR2(4000) NOT NULL,
+EMAIL VARCHAR2(50) NOT NULL,
+AGE NUMBER NOT NULL,
+PRIMARY KEY (ID));
+
+
+
+//MANEJADOR GET
+SELECT * FROM MESSAGE ORDER BY ID
+
+//MANEJADOR POST
+BEGIN 
+    INSERT INTO MESSAGE(ID,MESSAGETEXT)
+    VALUES(:id,:messagetext);
+    :status_code:=201;
+    END;
+
+
+//MANEJADOR PUT
+BEGIN
+    UPDATE MESSAGE SET MESSAGETEXT =:messagetext
+    WHERE ID =:id;
+    :status_code:=201;
+    END;
+
+//MANEJADOR DELETE
+BEGIN
+    DELETE FROM MESSAGE WHERE ID =:id;
+    :status_code:=204;
+    END;
+
+
+//message/:id 
+//MANEJADOR GET
+SELECT * FROM MESSAGE WHERE ID = :id
+
+
+//base de datos sql
+
+CREATE TABLE MESSAGE (
+ID NUMBER(10) NOT NULL,
+MESSAGETEXT VARCHAR2(4000) NOT NULL,
+PRIMARY KEY (ID));
