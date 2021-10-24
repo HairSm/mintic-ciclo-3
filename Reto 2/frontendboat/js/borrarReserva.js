@@ -1,12 +1,24 @@
+function mostrarEliminar(idReserva,infReserva){
+    $("#nuevo").hide();
+    $("#editar").hide();
+    $("#listado").hide();
+    $("#nuevoRegistro").hide();
+    $("#titleIdDelete").html("Desea eliminar la reserva con el id: " + idReserva + " ?...");    
+    $("#idDelete").val(idReserva);
+    $("#reservationDelete").html(infReserva);
+    $("#eliminar").show(1000);
+}
+
 /*
     Esta función recibe como parametro el id del registro a eliminar,
     ejecuta la petición asincrona al servidor de Oracle enviando dentro de los datos 
     de la petición registro a eliminar. El tipo de petición es DELETE
 */
 function borrarRegistro(llaveRegistro) {
+
     //crea un objeto javascript
-    let datos={
-        id: llaveRegistro
+    let datos = {
+        idReservation: llaveRegistro
     }
 
     //convierte el objeto javascript a json antes de agregarlo a los datos de la petición
@@ -14,17 +26,17 @@ function borrarRegistro(llaveRegistro) {
 
     $.ajax({
         // la URL para la petición (url: "url al recurso o endpoint")
-        url: "https://132.226.242.155:8081/ords/admin/message/message",
+        url: "http://132.226.242.155:8081/api/Reservation/" + llaveRegistro,
 
         // la información a enviar
         // (también es posible utilizar una cadena de datos)
         //si el metodo del servicio recibe datos, es necesario definir el parametro adicional
-        data : datosPeticion,
+        data: datosPeticion,
 
         // especifica el tipo de petición http: POST, GET, PUT, DELETE
         type: 'DELETE',
 
-        contentType:"application/JSON",
+        contentType: "application/JSON",
 
         // el tipo de información que se espera de respuesta
         dataType: 'json',
@@ -38,6 +50,7 @@ function borrarRegistro(llaveRegistro) {
             $("#mensajes").html("Registro eliminado...");
             $("#mensajes").hide(1000);
             listar();
+            estadoInicial();
         },
 
         // código a ejecutar si la petición falla;

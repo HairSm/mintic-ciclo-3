@@ -10,46 +10,24 @@ function validaesVacio(dato){
 function validar(){
     //obtiene valores
     let name = $("#name").val();
-    let brand = $("#brand").val();
-    let year = $("#year").val();
     let description = $("#description").val();
-    let category = $("#category").val();
     let errores="";
     $("#mensajes").html("");
 
     //valida que los campos no sean vacios
     if( validaesVacio(name)) {
-        errores="Debe ingresar el nombre<br>";
+        errores="Debe ingresar el nombre de la categoría<br>";
         $("#mensajes").html(errores);
         $("#mensajes").show(500);
         $("#name").focus();
         return false;
-    }else if( validaesVacio(brand)) {
-        errores="Debe ingresar la marca<br>";
-        $("#mensajes").html(errores);
-        $("#mensajes").show(500);
-        $("#brand").focus();
-        return false;
-    }else if( validaesVacio(year)) {  
-        errores="Debe ingresar el año<br>";
-        $("#mensajes").html(errores);
-        $("#mensajes").show(500);
-        $("#year").focus();
-        return false;
-    }else if( validaesVacio(category)) { 
-        errores="Debe seleccionar la categoría<br>";
-        $("#mensajes").html(errores);
-        $("#mensajes").show(500);
-        $("#category").focus();
-        return false;
-    }else if( validaesVacio(description)) { 
-        errores="Debe ingresar la descripción<br>";
+    }else if( validaesVacio(description)) {
+        errores="Debe ingresar la descripción de la categoría<br>";
         $("#mensajes").html(errores);
         $("#mensajes").show(500);
         $("#description").focus();
         return false;
-    }
-    else{
+    }else{
         $("#mensajes").html("");
         $("#mensajes").hide(500);
         return true;
@@ -67,41 +45,35 @@ function validar(){
     //obtiene valores
     let name = $("#nameEdit").val();
     let brand = $("#brandEdit").val();
-    let year = $("#yearEdit").val();
-    let description = $("#descriptionEdit").val();
+    let model = $("#modelEdit").val();
     let category = $("#categoryEdit").val();
+    let errores="";
     $("#mensajes").html("");
 
     //valida que los campos no sean vacios
     if( validaesVacio(name)) {
-        errores="Debe ingresar el nombre<br>";
+        errores="name vacio<br>";
         $("#mensajes").html(errores);
         $("#mensajes").show(500);
         $("#nameEdit").focus();
         return false;
     }else if( validaesVacio(brand)) {
-        errores="Debe ingresar la marca<br>";
+        errores="brand vacio<br>";
         $("#mensajes").html(errores);
         $("#mensajes").show(500);
         $("#brandEdit").focus();
         return false;
-    }else if( validaesVacio(year)) {  
-        errores="Debe ingresar el año<br>";
+    }else if( validaesVacio(model)) {  
+        errores="model vacio<br>";
         $("#mensajes").html(errores);
         $("#mensajes").show(500);
-        $("#yearEdit").focus();
+        $("#modelEdit").focus();
         return false;
     }else if( validaesVacio(category)) { 
-        errores="Debe seleccionar la categoría<br>";
+        errores="category vacio<br>";
         $("#mensajes").html(errores);
         $("#mensajes").show(500);
         $("#categoryEdit").focus();
-        return false;
-    }else if( validaesVacio(description)) { 
-        errores="Debe ingresar la descripción<br>";
-        $("#mensajes").html(errores);
-        $("#mensajes").show(500);
-        $("#descriptionEdit").focus();
         return false;
     }else{
         $("#mensajes").html("");

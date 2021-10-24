@@ -9,15 +9,28 @@ function validaesVacio(dato) {
  */
 function validar() {
     //obtiene valores
-    let id = $("#id").val();
-    let messagetext = $("#messagetext").val();
+    
+    let startDate = $("#startDate").val();
+    let devolutionDate = $("#devolutionDate").val();
     let client = $("#client").val();
     let boat = $("#boat").val();
     let errores = "";
     $("#mensajes").html("");
 
     //valida que los campos no sean vacios
-    if (validaesVacio(client)) {
+    if (validaesVacio(startDate)) {
+        errores = "Debe seleccionar la fecha de inicio<br>";
+        $("#mensajes").html(errores);
+        $("#mensajes").show(500);
+        $("#startDate").focus();
+        return false;
+    }else if (validaesVacio(devolutionDate)) {
+        errores = "Debe seleccionar la fecha de final<br>";
+        $("#mensajes").html(errores);
+        $("#mensajes").show(500);
+        $("#devolutionDate").focus();
+        return false;
+    }else if (validaesVacio(client)) {
         errores = "Debe seleccionar un cliente<br>";
         $("#mensajes").html(errores);
         $("#mensajes").show(500);
@@ -28,12 +41,6 @@ function validar() {
         $("#mensajes").html(errores);
         $("#mensajes").show(500);
         $("#boat").focus();
-        return false;
-    } else if (validaesVacio(messagetext)) {
-        errores = "Debe ingresar el texto del mensaje<br>";
-        $("#mensajes").html(errores);
-        $("#mensajes").show(500);
-        $("#messagetext").focus();
         return false;
     } else {
         $("#mensajes").html("");

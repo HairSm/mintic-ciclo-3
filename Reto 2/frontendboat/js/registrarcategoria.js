@@ -5,10 +5,7 @@ function registrar() {
     //crea un objeto javascript
     let datos={
         name: $("#name").val(),
-        email: $("#email").val(),
-        password: $("#password").val(),
-        age: $("#age").val()
-        
+        description: $("#description").val()
     }
 
     //convierte el objeto javascript a json antes de agregarlo a los datos de la petición
@@ -17,8 +14,9 @@ function registrar() {
     if (validar()){
         $.ajax({
             // la URL para la petición (url: "url al recurso o endpoint")
-            //url: "http://132.226.242.155:8081/api/Client/save",
-            url: "http://132.226.242.155:8081/api/Client/save",
+            //url: "http://132.226.242.155:8081/api/Category/save",
+            url: "http://132.226.242.155:8081/api/Category/save",
+            
             // la información a enviar
             // (también es posible utilizar una cadena de datos)
             //si el metodo del servicio recibe datos, es necesario definir el parametro adicional

@@ -4,6 +4,8 @@
     de la petición registro a eliminar. El tipo de petición es DELETE
 */
 function borrarRegistro(llaveRegistro) {
+    alert("Funcionalidad pendiente hasta el reto 4...")
+    
     //crea un objeto javascript
     let datos={
         id: llaveRegistro
@@ -14,7 +16,7 @@ function borrarRegistro(llaveRegistro) {
 
     $.ajax({
         // la URL para la petición (url: "url al recurso o endpoint")
-        url: "https://gd19461fa8d6ae6-db202109232025.adb.sa-saopaulo-1.oraclecloudapps.com/ords/admin/boat/boat",
+        url: "https://132.226.242.155:8081/ords/admin/boat/boat",
 
         // la información a enviar
         // (también es posible utilizar una cadena de datos)
@@ -48,4 +50,5 @@ function borrarRegistro(llaveRegistro) {
             $("#mensajes").hide(1000);
         }
     });
+    
 }

@@ -13,7 +13,7 @@ function editarRegistro(llaveRegistro) {
 
     $.ajax({
         // la URL para la petición (url: "url al recurso o endpoint")
-        url: "https://gd19461fa8d6ae6-db202109232025.adb.sa-saopaulo-1.oraclecloudapps.com/ords/admin/client/client/" + llaveRegistro,
+        url: "https://132.226.242.155:8081/ords/admin/client/client/" + llaveRegistro,
 
         // la información a enviar
         // (también es posible utilizar una cadena de datos)
@@ -83,7 +83,7 @@ function actualizar() {
     if (validarEditar()) {
         $.ajax({
             // la URL para la petición (url: "url al recurso o endpoint")
-            url: "https://gd19461fa8d6ae6-db202109232025.adb.sa-saopaulo-1.oraclecloudapps.com/ords/admin/client/client",
+            url: "https://132.226.242.155:8081/ords/admin/client/client",
 
             // la información a enviar
             // (también es posible utilizar una cadena de datos)

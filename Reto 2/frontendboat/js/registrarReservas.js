@@ -4,7 +4,8 @@ function registrar() {
 
     //crea un objeto javascript
     let datos={
-        messageText: $("#messagetext").val(),
+        startDate :$("#startDate").val(),
+        devolutionDate :$("#devolutionDate").val(),
         client:{"idClient":$("#client").val()},
         boat:{"id":$("#boat").val()}
     }
@@ -15,8 +16,9 @@ function registrar() {
     if (validar()){
         $.ajax({
             // la URL para la petición (url: "url al recurso o endpoint")
-            //url: "http://132.226.242.155:8081/api/Message/save",
-            url: "http://132.226.242.155:8081/api/Message/save",
+            //url: "http://132.226.242.155:8081/api/Reservation/save",
+            url: "http://132.226.242.155:8081/api/Reservation/save",
+
             // la información a enviar
             // (también es posible utilizar una cadena de datos)
             //si el metodo del servicio recibe datos, es necesario definir el parametro adicional
@@ -59,7 +61,7 @@ function registrar() {
  */
 function activaNuevo(){
     $("#nuevo").show(500);
-    $("#client").focus();
+    $("#startDate").focus();
     $("#editar").hide();
     $("#nuevoRegistro").hide(500)
     $("#listado").hide(500);
@@ -88,7 +90,7 @@ function listarClientes() {
         // la URL para la petición (url: "url al recurso o endpoint")
         //url: "http://132.226.242.155:8081/api/Client/all",
         url: "http://132.226.242.155:8081/api/Client/all",
-        
+
         // la información a enviar
         // (también es posible utilizar una cadena de datos)
         //si el metodo del servicio recibe datos, es necesario definir el parametro adicional
@@ -120,7 +122,7 @@ function listarClientes() {
 
         // código a ejecutar sin importar si la petición falló o no
         complete: function (xhr, status) {
-            $("#mensajes").html("Obteniendo listado de bicis...");
+            $("#mensajes").html("Obteniendo listado de Reservas...");
             $("#mensajes").hide(1000);
         }
     });
@@ -148,7 +150,6 @@ function listarBotes() {
         // la URL para la petición (url: "url al recurso o endpoint")
         //url: "http://132.226.242.155:8081/api/Boat/all",
         url: "http://132.226.242.155:8081/api/Boat/all",
-        
         // la información a enviar
         // (también es posible utilizar una cadena de datos)
         //si el metodo del servicio recibe datos, es necesario definir el parametro adicional
@@ -180,7 +181,7 @@ function listarBotes() {
 
         // código a ejecutar sin importar si la petición falló o no
         complete: function (xhr, status) {
-            $("#mensajes").html("Obteniendo listado de bicis...");
+            $("#mensajes").html("Obteniendo listado de Botes...");
             $("#mensajes").hide(1000);
         }
     });

@@ -4,16 +4,19 @@
 $(document).ready(function () {
     //configura el aspecto inicial de la pagina
     estadoInicial();
+    //ejecuta función para enviar petición al ws
+    listar();
 });
+
 
 //Esta función ejecuta la petición asincrona al servidor de Oracle, envia una
 //petición al ws de tipo GET
 function listar() {
     $.ajax({
         // la URL para la petición (url: "url al recurso o endpoint")
-        //url: "http://132.226.242.155:8081/api/Boat/all",
-        url: "http://132.226.242.155:8081/api/Boat/all",
-
+        //url: "http://132.226.242.155:8081/api/Reservation/all",
+        url: "http://132.226.242.155:8081/api/Reservation/all",
+        
         // la información a enviar
         // (también es posible utilizar una cadena de datos)
         //si el metodo del servicio recibe datos, es necesario definir el parametro adicional
@@ -45,7 +48,7 @@ function listar() {
 
         // código a ejecutar sin importar si la petición falló o no
         complete: function (xhr, status) {
-            $("#mensajes").html("Obteniendo listado de botes...");
+            $("#mensajes").html("Obteniendo listado de mensajes...");
             $("#mensajes").hide(1000);
         }
     });
@@ -59,34 +62,38 @@ function listar() {
     
 */
 function listarRespuesta(items) {
-    var json = JSON.stringify(items);
-
-    
     $("#listado").html("");
     $("#listado").show(500);
     //define variable javascript con la definicion inicial de la tabla, la primera fila y los
     //encabezados o títulos de la tabla
     var tabla = `<table border="1">
                   <tr>
-                    <th>Categoria</th>
-                    <th>Nombre</th>
-                    <th>Marca</th>
-                    <th>Año</th>
-                    <th>Descripción</th>
+                    <th>Inicio</th>
+                    <th>Devolución</th>
+                    <th>Cliente</th>
+                    <th>Bote</th>
                     <th colspan="2">Acciones</th>
                   </tr>`;
                   
     //recorre el arreglo de 'items' y construye dinamicamente la fila de datos de la tabla
     for (var i=0; i < items.length; i++) {
+        /*
+        var texto = `Fecha inicio: ${items[i].startDate} <br> 
+                     Fecha Fin: ${items[i].devolutionDate} <br> 
+                     Cliente: ${items[i].client.name} <br> 
+                     Bote: ${items[i].boat.name}`;
+        */
+        var texto = `Fecha inicio: ${items[i].startDate}</br>Fecha Fin: ${items[i].devolutionDate}</br>Cliente: ${items[i].client.name}</br>Bote: ${items[i].boat.name}`;
         tabla +=`<tr>
-                   <td>${items[i].category.name}</td>
-                   <td>${items[i].name}</td>
-                   <td>${items[i].brand}</td>
-                   <td>${items[i].year}</td>
-                   <td>${items[i].description}</td>
+                   <td>${items[i].startDate}</td>
+                   <td>${items[i].devolutionDate}</td>
+                   <td>${items[i].client.name}</td> 
+                   <td>${items[i].boat.name}</td> 
                    <td><button onclick="mostrarmensaje()">Editar</button></td>
-                   <td><button onclick="mostrarmensaje()">Borrar</button></td>
+                   <td><button onclick="mostrarEliminar(${items[i].idReservation},'${texto}')">Borrar</button></td>
+                                       
                    </tr>`;
+        texto ="";
     }
 
     //cierra tabla agregando el tag adecuado
@@ -102,16 +109,16 @@ function estadoInicial(){
     $("#editar").hide();
     $("#listado").show(500);
     $("#nuevoRegistro").show(500)
+    $("#eliminar").hide(); 
+    $("#idDelete").hide();
+    
 
     //limpia el contenido de los campos del formulario nuevo
-    $("#brand").val(""),
-    $("#year").val(""),
-    $("#category").val(""),
-    $("#name").val("")
-    
-    //ejecuta función para enviar petición al ws
+    $("#id").val(""),
+    $("#messagetext").val("")
     listar();
 }
+
 function mostrarmensaje(){
-    alert("Opción no impplementada hasta el reto 4...")
+    alert("Opción no implementada hasta el reto 4...")
 }

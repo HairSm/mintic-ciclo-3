@@ -12,13 +12,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="js/listarclientes.js"></script>
     <script src="js/registrarclientes.js"></script>
-    <script src="js/editarclientes.js"></script>
-    <script src="js/borrarclientes.js"></script>
     <script src="js/funcionescliente.js"></script>
 </head>
 
 <body>
     <div>
+        <P><img src="fondos\logo.jpg" alt="logo"height="150"><img src="fondos\logo2.jpg" alt="logo"height="100"></p>
+            <p></p> 
         <h1>Clientes Disponibles</h1>
 
         <!-- en el elemento identificado con el id 'mensajes' se mostraran los mensajes
@@ -35,10 +35,10 @@
         <!-- Seccion para nuevos registros-->
         <div id="nuevo">
             <h3>Registrar Cliente</h3>
-            <input type="number" id="id" placeholder="id">
-            <input type="text" id="name" placeholder="name">
-            <input type="email" id="email" placeholder="email">
-            <input type="number" id="age" placeholder="age">
+            <input type="text" id="name" placeholder="Nombre" onkeydown="upperCaseF(this)">
+            <input type="email" id="email" placeholder="Correo Electrónico">
+            <input type="password" id="password" placeholder="Contraseña">
+            <input type="number" id="age" placeholder="Edad">
             <button onclick="registrar();">Guardar</button>
             <button onclick="estadoInicial();">Cancelar</button>
         </div>

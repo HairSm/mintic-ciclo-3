@@ -13,7 +13,9 @@ $(document).ready(function () {
 function listar() {
     $.ajax({
         // la URL para la petición (url: "url al recurso o endpoint")
-        url: "https://gd19461fa8d6ae6-db202109232025.adb.sa-saopaulo-1.oraclecloudapps.com/ords/admin/client/client",
+        //url: "http://132.226.242.155:8081/api/Client/all",
+        url: "http://132.226.242.155:8081/api/Client/all",
+        
         
         // la información a enviar
         // (también es posible utilizar una cadena de datos)
@@ -30,10 +32,10 @@ function listar() {
         // la respuesta es pasada como argumento a la función
         success: function (respuesta) {
             //escribe en la consola del desarrollador para efectos de depuración
-            console.log(respuesta.items);
+            console.log(respuesta);
 
             //recibe el arreglo 'items' de la respuesta a la petición
-            listarRespuesta(respuesta.items);
+            listarRespuesta(respuesta);
         },
 
         // código a ejecutar si la petición falla;
@@ -78,8 +80,8 @@ function listarRespuesta(items) {
                    <td>${items[i].name}</td>
                    <td>${items[i].email}</td>
                    <td>${items[i].age}</td>
-                   <td><button onclick="editarRegistro(${items[i].id})">Editar</button></td>
-                   <td><button onclick="borrarRegistro(${items[i].id})">Borrar</button></td>
+                   <td><button onclick="mostrarmensaje()">Editar</button></td>
+                   <td><button onclick="mostrarmensaje()">Borrar</button></td>
                    </tr>`;
     }
 
@@ -103,4 +105,7 @@ function estadoInicial(){
     $("#model").val(""),
     $("#category").val(""),
     $("#name").val("")
+}
+function mostrarmensaje(){
+    alert("Opción no impplementada hasta el reto 4...")
 }

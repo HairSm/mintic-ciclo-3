@@ -13,7 +13,8 @@ $(document).ready(function () {
 function listar() {
     $.ajax({
         // la URL para la petición (url: "url al recurso o endpoint")
-        url: "https://gd19461fa8d6ae6-db202109232025.adb.sa-saopaulo-1.oraclecloudapps.com/ords/admin/message/message",
+        //url: "http://132.226.242.155:8081/api/Message/all",
+        url: "http://132.226.242.155:8081/api/Message/all",
         
         // la información a enviar
         // (también es posible utilizar una cadena de datos)
@@ -30,10 +31,10 @@ function listar() {
         // la respuesta es pasada como argumento a la función
         success: function (respuesta) {
             //escribe en la consola del desarrollador para efectos de depuración
-            console.log(respuesta.items);
+            console.log(respuesta);
 
             //recibe el arreglo 'items' de la respuesta a la petición
-            listarRespuesta(respuesta.items);
+            listarRespuesta(respuesta);
         },
 
         // código a ejecutar si la petición falla;
@@ -66,16 +67,20 @@ function listarRespuesta(items) {
     //encabezados o títulos de la tabla
     var tabla = `<table border="1">
                   <tr>
-                    <th>Texto</th>
+                    <th>Cliente</th>
+                    <th>Bote</th>
+                    <th>Mensaje</th>
                     <th colspan="2">Acciones</th>
                   </tr>`;
                   
     //recorre el arreglo de 'items' y construye dinamicamente la fila de datos de la tabla
     for (var i=0; i < items.length; i++) {
         tabla +=`<tr>
-                   <td>${items[i].messagetext}</td>
-                   <td><button onclick="editarRegistro(${items[i].id})">Editar</button></td>
-                   <td><button onclick="borrarRegistro(${items[i].id})">Borrar</button></td>
+                   <td>${items[i].client.name}</td> 
+                   <td>${items[i].boat.name}</td> 
+                   <td>${items[i].messageText}</td>
+                   <td><button onclick="mostrarmensaje()">Editar</button></td>
+                   <td><button onclick="mostrarmensaje()">Borrar</button></td>
                    </tr>`;
     }
 
@@ -92,8 +97,14 @@ function estadoInicial(){
     $("#editar").hide();
     $("#listado").show(500);
     $("#nuevoRegistro").show(500)
+    $("#idDelete").hide(); 
 
     //limpia el contenido de los campos del formulario nuevo
     $("#id").val(""),
     $("#messagetext").val("")
+    listar();
+}
+
+function mostrarmensaje(){
+    alert("Opción no implementada hasta el reto 4...")
 }
